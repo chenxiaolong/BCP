@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">BCPSample</string>
+    <string name="app_name_full">Basic Call Player (Sample)</string>
+
+    <!-- Preference headers -->
+    <string name="pref_header_general">General</string>
+    <string name="pref_header_about">About</string>
+
+    <!-- General preferences -->
+    <string name="pref_enabled_name">Enabled</string>
+    <string name="pref_enabled_desc">Play back a sine wave to the other party in a phone call.</string>
+
+    <!-- About "preference" -->
+    <string name="pref_version_name">Version</string>
+
+    <!-- Notifications -->
+    <string name="notification_channel_persistent_name">Background services</string>
+    <string name="notification_channel_persistent_desc">Persistent notification for call audio playback</string>
+    <string name="notification_channel_alerts_name">Alerts</string>
+    <string name="notification_channel_alerts_desc">Alerts for errors during call audio playback</string>
+    <string name="notification_playback_in_progress">Call audio playback in progress</string>
+    <string name="notification_playback_failed">Failed to play audio</string>
+</resources>
