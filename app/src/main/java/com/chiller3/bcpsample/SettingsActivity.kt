@@ -29,6 +29,7 @@ class SettingsActivity : AppCompatActivity() {
         Preference.OnPreferenceClickListener {
         private lateinit var prefs: Preferences
         private lateinit var prefEnabled: SwitchPreferenceCompat
+        private lateinit var prefAudioFile: Preference
         private lateinit var prefVersion: Preference
 
         private val requestPermissionRequired =
@@ -39,6 +40,11 @@ class SettingsActivity : AppCompatActivity() {
                 } else {
                     startActivity(Permissions.getAppInfoIntent(requireContext()))
                 }
+            }
+        private val requestSafAudioFile =
+            registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+                prefs.audioFile = uri
+                refreshAudioFile()
             }
 
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
@@ -57,9 +63,25 @@ class SettingsActivity : AppCompatActivity() {
             }
             prefEnabled.onPreferenceChangeListener = this
 
+            prefAudioFile = findPreference(Preferences.PREF_AUDIO_FILE)!!
+            prefAudioFile.onPreferenceClickListener = this
+            refreshAudioFile()
+
             prefVersion = findPreference(Preferences.PREF_VERSION)!!
             prefVersion.onPreferenceClickListener = this
             prefVersion.summary = "${BuildConfig.VERSION_NAME} (${BuildConfig.BUILD_TYPE})"
+        }
+
+        private fun refreshAudioFile() {
+            prefAudioFile.summary = buildString {
+                append(getString(R.string.pref_audio_file_desc))
+
+                val uri = prefs.audioFile
+                if (uri != null) {
+                    append("\n\n")
+                    append(uri.formattedString)
+                }
+            }
         }
 
         override fun onPreferenceChange(preference: Preference, newValue: Any?): Boolean {
@@ -84,6 +106,10 @@ class SettingsActivity : AppCompatActivity() {
 
         override fun onPreferenceClick(preference: Preference): Boolean {
             when (preference) {
+                prefAudioFile -> {
+                    requestSafAudioFile.launch(arrayOf("audio/*"))
+                    return true
+                }
                 prefVersion -> {
                     val uri = Uri.parse(BuildConfig.PROJECT_URL_AT_COMMIT)
                     startActivity(Intent(Intent.ACTION_VIEW, uri))
