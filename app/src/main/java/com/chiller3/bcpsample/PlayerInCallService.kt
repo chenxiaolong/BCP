@@ -129,7 +129,7 @@ class PlayerInCallService : InCallService(), PlayerThread.OnPlaybackCompletedLis
 
         return Notification.Builder(this, PlayerApplication.CHANNEL_ID_PERSISTENT).run {
             setContentTitle(getText(R.string.notification_playback_in_progress))
-            setSmallIcon(R.drawable.ic_launcher_foreground)
+            setSmallIcon(R.drawable.ic_launcher_notification)
             setContentIntent(pendingIntent)
             setOngoing(true)
 
@@ -155,7 +155,7 @@ class PlayerInCallService : InCallService(), PlayerThread.OnPlaybackCompletedLis
                 setContentText(text)
                 style = Notification.BigTextStyle()
             }
-            setSmallIcon(R.drawable.ic_launcher_foreground)
+            setSmallIcon(R.drawable.ic_launcher_notification)
 
             build()
         }
