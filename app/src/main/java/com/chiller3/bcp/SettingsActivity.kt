@@ -1,6 +1,7 @@
 package com.chiller3.bcp
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
@@ -26,7 +27,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     class SettingsFragment : PreferenceFragmentCompat(), Preference.OnPreferenceChangeListener,
-        Preference.OnPreferenceClickListener {
+        Preference.OnPreferenceClickListener, SharedPreferences.OnSharedPreferenceChangeListener {
         private lateinit var prefs: Preferences
         private lateinit var prefEnabled: SwitchPreferenceCompat
         private lateinit var prefAudioFile: Preference
@@ -70,6 +71,18 @@ class SettingsActivity : AppCompatActivity() {
             prefVersion = findPreference(Preferences.PREF_VERSION)!!
             prefVersion.onPreferenceClickListener = this
             prefVersion.summary = "${BuildConfig.VERSION_NAME} (${BuildConfig.BUILD_TYPE})"
+        }
+
+        override fun onStart() {
+            super.onStart()
+
+            preferenceScreen.sharedPreferences!!.registerOnSharedPreferenceChangeListener(this)
+        }
+
+        override fun onStop() {
+            super.onStop()
+
+            preferenceScreen.sharedPreferences!!.unregisterOnSharedPreferenceChangeListener(this)
         }
 
         private fun refreshAudioFile() {
@@ -118,6 +131,20 @@ class SettingsActivity : AppCompatActivity() {
             }
 
             return false
+        }
+
+        override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
+            when (key) {
+                // Update the switch state if it was toggled outside of the preference (eg. from the
+                // quick settings toggle)
+                prefEnabled.key -> {
+                    val current = prefEnabled.isChecked
+                    val expected = sharedPreferences.getBoolean(key, current)
+                    if (current != expected) {
+                        prefEnabled.isChecked = expected
+                    }
+                }
+            }
         }
     }
 }

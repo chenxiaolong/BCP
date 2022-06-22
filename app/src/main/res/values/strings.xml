@@ -22,4 +22,7 @@
     <string name="notification_channel_alerts_desc">Alerts for errors during call audio playback</string>
     <string name="notification_playback_in_progress">Call audio playback in progress</string>
     <string name="notification_playback_failed">Failed to play audio</string>
+
+    <!-- Quick settings tile -->
+    <string name="quick_settings_label">Call audio playback</string>
 </resources>
