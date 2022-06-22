@@ -1,9 +1,11 @@
 # Basic Call Player (Sample)
 
+<img src="app/images/icon.svg" alt="app icon" width="72" />
+
 ![latest release badge](https://img.shields.io/github/v/release/chenxiaolong/BCPSample?sort=semver)
 ![license badge](https://img.shields.io/github/license/chenxiaolong/BCPSample)
 
-BCPSample is a sample application that plays back a sine wave to the telephony audio stream when a phone call is active. It is meant to be a tech demo only.
+BCPSample is a tech demo application that plays an audio file to the other party when a phone call is active.
 
 ### Usage
 
@@ -19,7 +21,9 @@ BCPSample is a sample application that plays back a sine wave to the telephony a
 
 4. Enable call playback. When enabling for the first time, BCPSample will ask for notification permissions on Android 13+. This is required for the background service to bring itself to the foreground when a phone call is active.
 
-5. To install future updates, there are a couple methods:
+5. Select an audio file to play during phone calls.
+
+6. To install future updates, there are a couple methods:
 
     * If installed via Magisk, the module can be updated right from Magisk Manager's modules tab. Flashing the new version in Magisk manually also works just as well.
     * The `.apk` can also be extracted from the zip and be directly installed. With this method, the old version exists as a system app and the new version exists as a user-installed update to the system app. This method is more convenient if BCPSample is baked into the Android firmware image.
@@ -30,9 +34,9 @@ It only works on devices that implement the telephony audio output device. Newer
 
 ### How it works
 
-The phone call detection mechanism is the same as [what BCR does](https://github.com/chenxiaolong/BCR#how-it-works).
+The phone call detection mechanism is [the same as in BCR](https://github.com/chenxiaolong/BCR#how-it-works).
 
-The telephony output works by simply using the `MODIFY_PHONE_STATE` privileged system permission and creating an `AudioTrack` for the telephony output device.
+The telephony output works by simply using the `MODIFY_PHONE_STATE` privileged system permission and creating an `AudioTrack` instance for the telephony output device.
 
 ### Verifying digital signatures
 
@@ -102,7 +106,7 @@ and then build the release zip:
 
 ### Contributing
 
-This project is just a simple tech demo, so I don't plan to making any changes or accepting contributions from others. If telephony output interests you, please consider adding the feature to your own apps instead!
+Unlike [BCR](https://github.com/chenxiaolong/BCR), this project is meant as just a fun little project to demonstrate how to play audio to the telephony output device. I do not plan on doing any updates and am unlikely to accept contributions beyond small things, like translations. Please consider coming up with other interesting use cases and adding a similar feature to your own apps instead!
 
 ### License
 
