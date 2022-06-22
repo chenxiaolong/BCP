@@ -1,3 +1,7 @@
+### Version 1.1
+
+* Add quick settings tile
+
 ### Version 1.0
 
 * Initial release
