@@ -90,16 +90,16 @@ val gitVersionTriple = describeVersion(git)
 val gitVersionCode = getVersionCode(gitVersionTriple)
 val gitVersionName = getVersionName(git, gitVersionTriple)
 
-val projectUrl = "https://github.com/chenxiaolong/BCPSample"
+val projectUrl = "https://github.com/chenxiaolong/BCP"
 val releaseMetadataBranch = "master"
 
 android {
-    namespace = "com.chiller3.bcpsample"
+    namespace = "com.chiller3.bcp"
 
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.chiller3.bcpsample"
+        applicationId = "com.chiller3.bcp"
         minSdk = 28
         targetSdk = 33
         versionCode = gitVersionCode
@@ -173,11 +173,11 @@ android.applicationVariants.all {
         doLast {
             val props = LinkedHashMap<String, String>()
             props["id"] = variant.applicationId
-            props["name"] = "BCPSample"
+            props["name"] = "BCP"
             props["version"] = "v${variant.versionName}"
             props["versionCode"] = variant.versionCode.toString()
             props["author"] = "chenxiaolong"
-            props["description"] = "Basic Call Player (Sample)"
+            props["description"] = "Basic Call Player"
 
             if (variant.name == "release") {
                 props["updateJson"] = "${projectUrl}/raw/${releaseMetadataBranch}/app/magisk/updates/${variant.name}/info.json"
@@ -211,7 +211,7 @@ android.applicationVariants.all {
         inputs.property("variant.name", variant.name)
         inputs.property("variant.versionName", variant.versionName)
 
-        archiveFileName.set("BCPSample-${variant.versionName}-${variant.name}.zip")
+        archiveFileName.set("BCP-${variant.versionName}-${variant.name}.zip")
         destinationDirectory.set(File(destinationDirectory.asFile.get(), variant.name))
 
         // Make the zip byte-for-byte reproducible (note that the APK is still not reproducible)
@@ -263,7 +263,7 @@ android.applicationVariants.all {
             val root = JSONObject()
             root.put("version", variant.versionName)
             root.put("versionCode", variant.versionCode)
-            root.put("zipUrl", "${projectUrl}/releases/download/${gitVersionTriple.first}/BCPSample-${variant.versionName}-release.zip")
+            root.put("zipUrl", "${projectUrl}/releases/download/${gitVersionTriple.first}/BCP-${variant.versionName}-release.zip")
             root.put("changelog", "${projectUrl}/raw/${releaseMetadataBranch}/app/magisk/updates/${variant.name}/changelog.txt")
 
             jsonFile.writer().use {

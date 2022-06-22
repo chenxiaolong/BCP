@@ -1,32 +1,32 @@
-# Basic Call Player (Sample)
+# Basic Call Player
 
 <img src="app/images/icon.svg" alt="app icon" width="72" />
 
-![latest release badge](https://img.shields.io/github/v/release/chenxiaolong/BCPSample?sort=semver)
-![license badge](https://img.shields.io/github/license/chenxiaolong/BCPSample)
+![latest release badge](https://img.shields.io/github/v/release/chenxiaolong/BCP?sort=semver)
+![license badge](https://img.shields.io/github/license/chenxiaolong/BCP)
 
-BCPSample is a tech demo application that plays an audio file to the other party when a phone call is active.
+BCP is a tech demo application that plays an audio file to the other party when a phone call is active.
 
 ### Usage
 
-1. Download the latest version from the [releases page](https://github.com/chenxiaolong/BCPSample/releases). To verify the digital signature, see the [verifying digital signatures](#verifying-digital-signatures) section.
+1. Download the latest version from the [releases page](https://github.com/chenxiaolong/BCP/releases). To verify the digital signature, see the [verifying digital signatures](#verifying-digital-signatures) section.
 
-2. Install BCPSample as a system app.
+2. Install BCP as a system app.
 
     **For devices rooted with Magisk**, simply flash the zip as a Magisk module from within the Magisk app.
 
     **For unrooted custom firmware**, the files from the `system/` folder in the zip will need to be baked into the system image (or otherwise made available on the actual `/system` volume).
 
-3. Reboot and open BCPSample.
+3. Reboot and open BCP.
 
-4. Enable call playback. When enabling for the first time, BCPSample will ask for notification permissions on Android 13+. This is required for the background service to bring itself to the foreground when a phone call is active.
+4. Enable call playback. When enabling for the first time, BCP will ask for notification permissions on Android 13+. This is required for the background service to bring itself to the foreground when a phone call is active.
 
 5. Select an audio file to play during phone calls.
 
 6. To install future updates, there are a couple methods:
 
     * If installed via Magisk, the module can be updated right from Magisk Manager's modules tab. Flashing the new version in Magisk manually also works just as well.
-    * The `.apk` can also be extracted from the zip and be directly installed. With this method, the old version exists as a system app and the new version exists as a user-installed update to the system app. This method is more convenient if BCPSample is baked into the Android firmware image.
+    * The `.apk` can also be extracted from the zip and be directly installed. With this method, the old version exists as a system app and the new version exists as a user-installed update to the system app. This method is more convenient if BCP is baked into the Android firmware image.
 
 ### It doesn't work!
 
@@ -51,7 +51,7 @@ gpg --recv-key 2233C479609BDCEC43BE9232F6A3B19090EFF32C
 Then, verify the signature of the zip file.
 
 ```bash
-gpg --verify BCPSample-<version>-release.zip.asc BCPSample-<version>-release.zip
+gpg --verify BCP-<version>-release.zip.asc BCP-<version>-release.zip
 ```
 
 The command output should include both `Good signature` and the GPG fingerprint listed above.
@@ -59,7 +59,7 @@ The command output should include both `Good signature` and the GPG fingerprint 
 To verify the signature of the APK, extract it from the zip and then run:
 
 ```
-apksigner verify --print-certs system/priv-app/com.chiller3.bcpsample/app-release.apk
+apksigner verify --print-certs system/priv-app/com.chiller3.bcp/app-release.apk
 ```
 
 The SHA-256 digest of the APK signing certificate is:
@@ -70,7 +70,7 @@ d16f9b375df668c58ef4bb855eae959713d6d02e45f7f2c05ce2c27ae944f4f9
 
 ### Building from source
 
-BCPSample can be built like most other Android apps using Android Studio or the gradle command line.
+BCP can be built like most other Android apps using Android Studio or the gradle command line.
 
 To build the APK:
 
@@ -110,4 +110,4 @@ Unlike [BCR](https://github.com/chenxiaolong/BCR), this project is meant as just
 
 ### License
 
-BCPSample is licensed under GPLv3. Please see [`LICENSE`](./LICENSE) for the full license text.
+BCP is licensed under GPLv3. Please see [`LICENSE`](./LICENSE) for the full license text.

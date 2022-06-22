@@ -20,6 +20,6 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
-# Disable obfuscation completely for BCPSample. As an open source project,
+# Disable obfuscation completely for BCP. As an open source project,
 # shrinking is the only goal of minification.
 -dontobfuscate

@@ -1,4 +1,4 @@
-package com.chiller3.bcpsample
+package com.chiller3.bcp
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.chiller3.bcpsample", appContext.packageName)
+        assertEquals("com.chiller3.bcp", appContext.packageName)
     }
 }

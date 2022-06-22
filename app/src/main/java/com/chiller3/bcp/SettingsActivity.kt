@@ -1,4 +1,4 @@
-package com.chiller3.bcpsample
+package com.chiller3.bcp
 
 import android.content.Intent
 import android.net.Uri
