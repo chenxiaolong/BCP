@@ -7,6 +7,8 @@
 
 BCP is a tech demo application that plays an audio file to the other party when a phone call is active.
 
+<img src="app/images/light.png" alt="light mode screenshot" width="200" /> <img src="app/images/dark.png" alt="dark mode screenshot" width="200" />
+
 ### Usage
 
 1. Download the latest version from the [releases page](https://github.com/chenxiaolong/BCP/releases). To verify the digital signature, see the [verifying digital signatures](#verifying-digital-signatures) section.
